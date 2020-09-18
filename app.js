@@ -89,8 +89,8 @@ const store = {
 // These functions return HTML templates
 function welcomeScreen() {
   const template =
-    `<div><img src ="images/eagleslogo.jpg" alt="eagleslogo"></img></div>
-    <div class="welcome-sect">
+    `<div class='welcome-img'><img src ="images/eagleslogo.jpg" alt="eagleslogo"></img></div>
+    <div class='welcome-sect'>
       <h2 class="ready-header">Do you think you bleed green??</h2>
       <div>
         <button class="readyButt yes-butt BUTTON_TWS"><span>Let's Go!!</span></button>
@@ -133,7 +133,7 @@ function rightAnswer() {
     `<div class="result-section">
     <h1>CORRECT!!</h1>
     <h2>FLY EAGLES FLY!!</h2>
-    <div>${store.questions[store.questionNumber].imageLink}</div>
+    <div class="ques-result-image">${store.questions[store.questionNumber].imageLink}</div>
     <button class="next-question-butt BUTTON_TWS"><span>Next Question</span></button>
   </div>
 `;
@@ -147,7 +147,7 @@ function wrongAnswer() {
     `<div class="result-section">
     <h1>WRONG!!</h1>
     <h2>Correct answer is: ${store.questions[store.questionNumber].correctAnswer}</h2>
-    <div>${store.questions[store.questionNumber].imageLink}</div>
+    <div class="ques-result-image">${store.questions[store.questionNumber].imageLink}</div>
     <button class="next-question-butt BUTTON_TWS"><span>Next Question</span></button>
   </div>`;
   store.questionNumber += 1;

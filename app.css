@@ -35,6 +35,18 @@ div img {
   width: 70%;
 }
 
+div.welcome-img img {
+  margin-bottom: 5%;
+}
+
+div.welcome-sect {
+  margin: auto;
+}
+
+.readyButt {
+  margin-top: 10%;
+}
+
 /*** Button Styles **/
 .BUTTON_TWS {
   background: ACC0C6;
@@ -64,13 +76,9 @@ div img {
   text-decoration: none;
 }
 
-.BUTTON_TWS:active {
-  border: solid #000000 1px;
-  background: #004C54;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  text-decoration: none;
+
+.ques-result-image img {
+  margin-top: 30%;
 }
 
 .readyButt {
@@ -94,10 +102,6 @@ div img {
   font-family: Verdana;
 }
 
-/** Welcome section holder**/
-.welcome-sect {
-  margin: 10px;
-}
 
 .question-container {
   justify-self: auto;
@@ -114,17 +118,12 @@ h2.question-counter {
   padding: 20px;
 }
 
-h2.ready-header {
-  margin-top: 40%;
-}
 
 .page-header {
   padding: 20%;
 }
 
-.readyButt {
-  margin-top: 20%;
-}
+
 
 .counter-div {
   padding: 10px;

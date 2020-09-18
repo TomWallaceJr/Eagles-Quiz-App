@@ -1,0 +1,231 @@
+/* Your styles should be mobile-first and responsive */
+
+/** 
+  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
+  *
+  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
+  *
+*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  justify-content: center;
+  background-color: #004C54;
+  color: white;
+}
+
+header {
+  background-color: #ACC0C6;
+}
+
+header h1 {
+  color: white;
+  font-family: 'cukoo, sans-serif';
+  font-size: 50px;
+}
+
+
+/*** Button Styles **/
+.BUTTON_TWS {
+  background: ACC0C6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-family: Verdana;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 5px;
+  text-shadow: 1px 1px 5px #050709;
+  border: ridge #000000 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.BUTTON_TWS:hover {
+  border: solid #000000 1px;
+  background: white;
+  color: #565A5C;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.BUTTON_TWS:active {
+  border: solid #000000 1px;
+  background: #004C54;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.readyButt {
+  margin-bottom: 20%;
+  font-size: 40px;
+}
+
+.next-question-butt {
+  margin-top: 30%;
+}
+
+.restart-button {
+  margin-top: 30%;
+}
+
+/** Welcome section holder**/
+.welcome-sect {
+  margin: 10px;
+}
+
+.question-container {
+  justify-self: auto;
+  margin-bottom: 10%;
+}
+
+.result-section {
+  margin: 0 20% 0 20%;
+  border-radius: 5%;
+}
+
+
+h2.question-counter {
+  padding: 20px;
+}
+
+h2.ready-header {
+  margin-top: 40%;
+}
+
+.page-header {
+  padding: 20%;
+}
+
+.readyButt {
+  margin-top: 20%;
+}
+
+.counter-div {
+  padding: 10px;
+}
+
+.question-counter {
+  width: 50%;
+  margin: auto;
+  padding: 0;
+}
+
+.question-spot {
+  padding-bottom: 2%;
+  text-decoration: underline;
+}
+
+.answer-spot {
+  padding-bottom: 15%;
+}
+
+.feedback-section {
+  padding-top: 10%;
+}
+
+.submit-butt {
+  margin-top: 5%;
+}
+
+.whereAns {
+  text-align: center;
+}
+
+#answers-sect {
+  margin: auto;
+  width: 100px;
+  box-sizing: border-box;
+  position: relative;
+  text-align: left;
+}
+
+.answer {
+  margin-bottom: 14px;
+}
+
+
+@media all and (min-width: 600px) {
+
+  header {
+    height: 200px;
+    background-color: #ACC0C6;
+    margin-top: 0;
+  }
+
+  header h1 {
+    font-size: 80px;
+    padding-top: 10px;
+    text-align: center;
+
+  }
+
+  .welcome-sect h2 {
+    font-size: 50px;
+    margin-top: 0;
+  }
+
+  .readyButt {
+    font-size: 80px;
+    border: solid black;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+    margin-top: 20px;
+  }
+
+  .question-container {
+    font-size: 40px;
+  }
+
+  .answers-section {
+    margin-bottom: 150px;
+  }
+
+  .answer {
+    font-size: 40px;
+  }
+
+  input[type=radio] {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+/** IPAD Screen **/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .welcome-sect {
+    margin-top: 150px;
+  }
+
+  .readyButt {
+    background: ACC0C6;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: Verdana;
+    font-size: 50px;
+    font-weight: 100;
+    padding: 5px;
+    text-shadow: 1px 1px 5px #050709;
+    border: ridge #000000 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+}

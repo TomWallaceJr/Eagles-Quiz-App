@@ -91,9 +91,9 @@ function welcomeScreen() {
   const template =
     `<div class='welcome-img'><img src ="images/eagleslogo.jpg" alt="eagleslogo"></img></div>
     <div class='welcome-sect'>
-      <h2 class="ready-header">Do you think you bleed green??</h2>
+      <h2 class='ready-header'>Do you think you bleed green??</h2>
       <div>
-        <button class="readyButt yes-butt BUTTON_TWS"><span>Let's Go!!</span></button>
+        <button class='readyButt yes-butt BUTTON_TWS'><span>Let's Go!!</span></button>
       </div>
     </div>`;
   return template;

@@ -21,7 +21,9 @@ const store = {
         'Nick Foles',
         'Tom Brady'
       ],
-      correctAnswer: 'Carson Wentz'
+      correctAnswer: 'Carson Wentz',
+      imageLink: '<img src="images/carson.jpg">'
+
     },
     {
       question: 'Who did the Eagles beat in their only Super Bowl victory?',
@@ -31,7 +33,8 @@ const store = {
         'New England Patriots',
         'Oakland Raiders'
       ],
-      correctAnswer: 'New England Patriots'
+      correctAnswer: 'New England Patriots',
+      imageLink: '<img src="images/superbowl.jpg">',
     },
     {
       question: 'Who set an Eagles record by passing for 447 yards in one game?',
@@ -41,7 +44,8 @@ const store = {
         'Donovan McNabb',
         'Duce Staley'
       ],
-      correctAnswer: 'Randall Cunningham'
+      correctAnswer: 'Randall Cunningham',
+      imageLink: '<img src="images/randall.jpg">',
     },
     {
       question: 'What former Eagle was the inspiration for the movie "Invincible"?',
@@ -51,7 +55,8 @@ const store = {
         'Brian Dawkins',
         'Vince Papale'
       ],
-      correctAnswer: 'Vince Papale'
+      correctAnswer: 'Vince Papale',
+      imageLink: '<img src="images/vince.jpg">'
     },
     {
       question: 'Where did Eagles great Donovan McNabb attend college?',
@@ -61,7 +66,8 @@ const store = {
         'Alabama',
         'Texas'
       ],
-      correctAnswer: 'Syracuse'
+      correctAnswer: 'Syracuse',
+      imageLink: '<img src="images/mcnabb.jpg">'
     },
   ],
 };
@@ -83,7 +89,8 @@ const store = {
 // These functions return HTML templates
 function welcomeScreen() {
   const template =
-    `<div class="welcome-sect">
+    `<div><img src ="images/eagleslogo.jpg" alt="eagleslogo"></img></div>
+    <div class="welcome-sect">
       <h2 class="ready-header">Do you think you bleed green??</h2>
       <div>
         <button class="readyButt yes-butt BUTTON_TWS"><span>Let's Go!!</span></button>
@@ -126,6 +133,7 @@ function rightAnswer() {
     `<div class="result-section">
     <h1>CORRECT!!</h1>
     <h2>FLY EAGLES FLY!!</h2>
+    <div>${store.questions[store.questionNumber].imageLink}</div>
     <button class="next-question-butt BUTTON_TWS"><span>Next Question</span></button>
   </div>
 `;
@@ -139,6 +147,7 @@ function wrongAnswer() {
     `<div class="result-section">
     <h1>WRONG!!</h1>
     <h2>Correct answer is: ${store.questions[store.questionNumber].correctAnswer}</h2>
+    <div>${store.questions[store.questionNumber].imageLink}</div>
     <button class="next-question-butt BUTTON_TWS"><span>Next Question</span></button>
   </div>`;
   store.questionNumber += 1;
@@ -156,40 +165,8 @@ function checkAnswer(correctinput) {
 }
 
 
-function restartButton() {
-  $('.end-page-button').on('click', '.restart-button', function () {
-    console.log('Restart Button Pressed!');
-    store.quizStarted = true;
-    store.questionNumber = 0;
-    render();
-  });
-}
 
-function endPage() {
-  let userAnswer = $('input[name="radio"]:checked').val();
-  let correctans = store.questions[store.questionNumber].correctAnswer;
-  const endPageRightAnswer =
-    `
-  <h2>Correct!</h2>
-  `;
-  const endPageWrongAnswer =
-    `
-  <h2>WRONG!!!</h2>
-  <h3>Correct answer is: ${store.questions[store.questionNumber].correctAnswer} </h3>
-  `;
-  const endpage = `
-  <h2>End of quiz!!</h2>
-  <h2>Your score is: ${store.score} out of ${store.questions.length}</h2>
-  <div class="end-page-button"><button class="restart-button BUTTON_TWS">Restart?</button></div>
-  `;
-  if (userAnswer === correctans) {
-    store.quizStarted = false;
-    return endPageRightAnswer + endpage;
-  } else {
-    store.quizStarted = false;
-    return endPageWrongAnswer + endpage;
-  }
-}
+
 
 
 function readyButtonPress() {
@@ -224,6 +201,40 @@ function nextQuestionButton() {
   $('.result-section').on('click', '.next-question-butt', function () {
     console.log('Next question button');
     store.quizStarted = true;
+    render();
+  });
+}
+
+function endPage() {
+  let userAnswer = $('input[name="radio"]:checked').val();
+  let correctans = store.questions[store.questionNumber].correctAnswer;
+  const endPageRightAnswer = `
+  <div><h2>Correct!</h2></div>`;
+  const endPageWrongAnswer =
+    `<div>
+  <h2>WRONG!!!</h2>
+  <h3>Correct answer is: ${store.questions[store.questionNumber].correctAnswer} </h3>
+  </div>`;
+  const endpage = `<div><img src ="images/bleedgreen.jpg" alt="bleedgreen"></img></div>
+  <div class="end"><h2>End of quiz!!</h2>
+  <h2>Your score is: ${store.score} out of ${store.questions.length}</h2></div><div><h1 class='flyeaglesfly'>FLY EAGLES FLY!!!</h1></div>
+  <div class="end-page-button"><button class="restart-button BUTTON_TWS">Restart?</button></div>
+  `;
+  if (userAnswer === correctans) {
+    store.quizStarted = false;
+    store.score += 1;
+    return endPageRightAnswer + endpage;
+  } else {
+    store.quizStarted = false;
+    return endPageWrongAnswer + endpage;
+  }
+}
+
+function restartButton() {
+  $('.end-page-button').on('click', '.restart-button', function () {
+    console.log('Restart Button Pressed!');
+    store.quizStarted = true;
+    store.questionNumber = 0;
     render();
   });
 }

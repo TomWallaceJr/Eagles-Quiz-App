@@ -9,7 +9,6 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -21,14 +20,20 @@ body {
 
 header {
   background-color: #ACC0C6;
+  margin-top: 0;
 }
 
 header h1 {
   color: white;
   font-family: 'cukoo, sans-serif';
   font-size: 50px;
+  margin-top: 0;
 }
 
+div img {
+  height: 70%;
+  width: 70%;
+}
 
 /*** Button Styles **/
 .BUTTON_TWS {
@@ -78,7 +83,15 @@ header h1 {
 }
 
 .restart-button {
-  margin-top: 30%;
+  margin-top: 5%;
+  font-size: 20px;
+  cursor: pointer;
+  background: #ACC0C6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-family: Verdana;
 }
 
 /** Welcome section holder**/
@@ -154,6 +167,44 @@ h2.ready-header {
 
 .answer {
   margin-bottom: 14px;
+}
+
+h1.flyeaglesfly {
+  animation: color-change 2s infinite;
+}
+
+@keyframes color-change {
+  5% {
+    color: red;
+  }
+
+  14% {
+    color: orange;
+  }
+
+  28% {
+    color: yellow;
+  }
+
+  42% {
+    color: green
+  }
+
+  56% {
+    color: teal
+  }
+
+  70% {
+    color: blue
+  }
+
+  84% {
+    color: indigo
+  }
+
+  100% {
+    color: violet
+  }
 }
 
 

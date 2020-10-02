@@ -1,90 +1,101 @@
-/* eslint-disable no-cond-assign */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-console */
-/* eslint-disable indent */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-'use strict';
-/**
- * Example store structure
+/***************EAGLES Quiz Application*************
+ * 
+ * Written by: Thomas Wallace
+ * 
+ * /**
+ * 
+ * Technical requirements:
+ * 
+ *              Your app should include a render() function, that regenerates the view each time the store is updated. 
+ *                See your course material and access support for more details.
+ *
+ *                   NO additional HTML elements should be added to the index.html file.
+ *
+ *                    You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
+ *
+ *               SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
+ * 
+ *
+ * "ISSUES AND BUGS TO FIX!!"
+ *            ----- Application runs very well and performs as expected, but i'd like to make it
+ *                      look better and refactor with more efficient code.
+ * 
+ *        1. Button on last question screen is still a 'next question button. i'd like 
+ *            it to be a 'See Results' button
+ * 
+ *        2. CSS can use some tweaking. Text and buttons very small on wider screens until media query is 
+ *             hit at 600px
+ *          
+ *        3. I have multiple render functions, I'd like to only have one
+ * 
+ * 
  */
+'use strict';
+
 const store = {
   quizStarted: false,
   questionNumber: 0,
   score: 0,
   // 5 or more questions are required
   questions: [{
-      question: 'Who is the current QB of the Philadelphia Eagles?',
-      answers: [
-        'Donovan McNabb',
-        'Carson Wentz',
-        'Nick Foles',
-        'Tom Brady'
-      ],
-      correctAnswer: 'Carson Wentz',
-      imageLink: '<img src="images/carson.jpg">'
+    question: 'Who is the current QB of the Philadelphia Eagles?',
+    answers: [
+      'Donovan McNabb',
+      'Carson Wentz',
+      'Nick Foles',
+      'Tom Brady'
+    ],
+    correctAnswer: 'Carson Wentz',
+    imageLink: '<img src="images/carson.jpg">'
 
-    },
-    {
-      question: 'Who did the Eagles beat in their only Super Bowl victory?',
-      answers: [
-        'Dallas Cowboys',
-        'Pittsburgh Steelers',
-        'New England Patriots',
-        'Oakland Raiders'
-      ],
-      correctAnswer: 'New England Patriots',
-      imageLink: '<img src="images/superbowl.jpg">',
-    },
-    {
-      question: 'Who set an Eagles record by passing for 447 yards in one game?',
-      answers: [
-        'Randall Cunningham',
-        'Carson Wentz',
-        'Donovan McNabb',
-        'Duce Staley'
-      ],
-      correctAnswer: 'Randall Cunningham',
-      imageLink: '<img src="images/randall.jpg">',
-    },
-    {
-      question: 'What former Eagle was the inspiration for the movie "Invincible"?',
-      answers: [
-        'Ricky Watters',
-        'Reggie White',
-        'Brian Dawkins',
-        'Vince Papale'
-      ],
-      correctAnswer: 'Vince Papale',
-      imageLink: '<img src="images/vince.jpg">'
-    },
-    {
-      question: 'Where did Eagles great Donovan McNabb attend college?',
-      answers: [
-        'Penn State',
-        'Syracuse',
-        'Alabama',
-        'Texas'
-      ],
-      correctAnswer: 'Syracuse',
-      imageLink: '<img src="images/mcnabb.jpg">'
-    },
+  },
+  {
+    question: 'Who did the Eagles beat in their only Super Bowl victory?',
+    answers: [
+      'Dallas Cowboys',
+      'Pittsburgh Steelers',
+      'New England Patriots',
+      'Oakland Raiders'
+    ],
+    correctAnswer: 'New England Patriots',
+    imageLink: '<img src="images/superbowl.jpg">',
+  },
+  {
+    question: 'Who set an Eagles record by passing for 447 yards in one game?',
+    answers: [
+      'Randall Cunningham',
+      'Carson Wentz',
+      'Donovan McNabb',
+      'Duce Staley'
+    ],
+    correctAnswer: 'Randall Cunningham',
+    imageLink: '<img src="images/randall.jpg">',
+  },
+  {
+    question: 'What former Eagle was the inspiration for the movie "Invincible"?',
+    answers: [
+      'Ricky Watters',
+      'Reggie White',
+      'Brian Dawkins',
+      'Vince Papale'
+    ],
+    correctAnswer: 'Vince Papale',
+    imageLink: '<img src="images/vince.jpg">'
+  },
+  {
+    question: 'Where did Eagles great Donovan McNabb attend college?',
+    answers: [
+      'Penn State',
+      'Syracuse',
+      'Alabama',
+      'Texas'
+    ],
+    correctAnswer: 'Syracuse',
+    imageLink: '<img src="images/mcnabb.jpg">'
+  },
   ],
 };
-/**
- * 
- * Technical requirements:
- * 
- * Your app should include a render() function, that regenerates the view each time the store is updated. 
- * See your course material and access support for more details.
- *
- * NO additional HTML elements should be added to the index.html file.
- *
- * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
- *
- * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
- * 
- */
+
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 // These functions return HTML templates
 function welcomeScreen() {
@@ -115,19 +126,20 @@ function answerSection(counter) {
       <div class="answers-section">
         <form id="answers-form">
           ${store.questions[counter].answers
-            .map(
-              (answer) =>
-                `<div class="answer"><label class="answer-selected"><input type="radio" class="answer-input" name="radio" value="${answer}" aria-pressed="false">${answer}</label></div>`
-            )
-            .join('')}
+      .map(
+        (answer) =>
+          `<div class="answer"><label class="answer-selected"><input type="radio" class="answer-input" name="radio" value="${answer}" aria-pressed="false">${answer}</label></div>`
+      )
+      .join('')}
           <input type="submit" value="Submit" class="submit-button BUTTON_TWS">
         </form>
       </div>
       `;
-  const pressedBool = $('.answer-selected').attr('aria-pressed') === true;
+  // const pressedBool = $('.answer-selected').attr('aria-pressed') === true;
   return template;
 }
 
+// results for right and wrong answer in two functions below
 function rightAnswer() {
   const correctAnswer =
     `<div class="result-section">
@@ -188,11 +200,7 @@ function subButt() {
     if (!userAnswer) {
       alert('Please select an answer');
     } else {
-      if (store.questionNumber + 1 === store.questions.length) {
-        renderEndPage();
-      } else {
-        renderResults();
-      }
+      renderResults()
     }
   });
 }
@@ -200,34 +208,24 @@ function subButt() {
 function nextQuestionButton() {
   $('.result-section').on('click', '.next-question-butt', function () {
     console.log('Next question button');
-    store.quizStarted = true;
-    render();
+    // if this question was the last question, next question button will take us to results screen
+    if (store.questionNumber === store.questions.length) {
+      console.log('question number is equal to total number of questions');
+      renderEndPage();
+    } else {
+      store.quizStarted = true;
+      render();
+    }
   });
 }
 
 function endPage() {
-  let userAnswer = $('input[name="radio"]:checked').val();
-  let correctans = store.questions[store.questionNumber].correctAnswer;
-  const endPageRightAnswer = `
-  <div><h2>Correct!</h2></div>`;
-  const endPageWrongAnswer =
-    `<div>
-  <h2>WRONG!!!</h2>
-  <h3>Correct answer is: ${store.questions[store.questionNumber].correctAnswer} </h3>
-  </div>`;
   const endpage = `<div><img src ="images/bleedgreen.jpg" alt="bleedgreen"></img></div>
   <div class="end"><h2>End of quiz!!</h2>
   <h2>Your score is: ${store.score} out of ${store.questions.length}</h2></div><div><h1 class='flyeaglesfly'>FLY EAGLES FLY!!!</h1></div>
   <div class="end-page-button"><button class="restart-button BUTTON_TWS">Restart?</button></div>
   `;
-  if (userAnswer === correctans) {
-    store.quizStarted = false;
-    store.score += 1;
-    return endPageRightAnswer + endpage;
-  } else {
-    store.quizStarted = false;
-    return endPageWrongAnswer + endpage;
-  }
+  return endpage;
 }
 
 function restartButton() {
@@ -260,8 +258,12 @@ function renderResults() {
 
 function renderEndPage() {
   let page = '';
+  // sets page to endpage template
   page += endPage();
   $('main').html(page);
+  // resets score
+  store.score = 0
+  // adds restart button
   restartButton();
 }
 // This function conditionally replaces the contents of the <main> tag based on the state of the store

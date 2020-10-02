@@ -4,16 +4,6 @@
  * 
  * /**
  * 
- * Technical requirements:
- * 
- *              Your app should include a render() function, that regenerates the view each time the store is updated. 
- *                See your course material and access support for more details.
- *
- *                   NO additional HTML elements should be added to the index.html file.
- *
- *                    You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
- *
- *               SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
  * 
  *
  * "ISSUES AND BUGS TO FIX!!"
@@ -141,34 +131,40 @@ function answerSection(counter) {
 
 // results for right and wrong answer in two functions below
 function rightAnswer() {
+  // add to score for correct answer
+  store.score += 1;
   const correctAnswer =
     `<div class="result-section">
     <h1>CORRECT!!</h1>
     <h2>FLY EAGLES FLY!!</h2>
-    <div class="ques-result-image">${store.questions[store.questionNumber].imageLink}</div>
+    <div class="ques-result-image">${store.questions[store.questionNumber - 1].imageLink}</div>
+    <h2>Your current score is ${store.score} out of ${store.questionNumber}!</h2>
     <button class="next-question-butt BUTTON_TWS"><span>Next Question</span></button>
   </div>
 `;
-  store.score += 1;
-  store.questionNumber += 1;
+
   return correctAnswer;
 }
 
 function wrongAnswer() {
+  console.log(store.questions)
+  console.log(store.questionNumber)
   const wrongAnswer =
     `<div class="result-section">
     <h1>WRONG!!</h1>
-    <h2>Correct answer is: ${store.questions[store.questionNumber].correctAnswer}</h2>
-    <div class="ques-result-image">${store.questions[store.questionNumber].imageLink}</div>
+    <h2>Correct answer is: ${store.questions[store.questionNumber - 1].correctAnswer}</h2>
+    <div class="ques-result-image">${store.questions[store.questionNumber - 1].imageLink}</div>
+    <h2>Your current score is ${store.score} out of ${store.questionNumber}!</h2>
     <button class="next-question-butt BUTTON_TWS"><span>Next Question</span></button>
   </div>`;
-  store.questionNumber += 1;
+
   return wrongAnswer;
 }
 
 function checkAnswer(correctinput) {
   let userAnswer = $('input[name="radio"]:checked').val();
   console.log('User Answer: ' + userAnswer);
+  store.questionNumber += 1;
   if (userAnswer == correctinput) {
     return rightAnswer();
   } else {
@@ -193,6 +189,7 @@ function readyButtonPress() {
 function subButt() {
   $('body').submit('#answers-form', function (event) {
     event.preventDefault();
+    //console.log(store.questionNumber)
     let correctans = store.questions[store.questionNumber].correctAnswer;
     let userAnswer = $('input[name="radio"]:checked').val();
     console.log('Correct answer: ' + `${correctans}`);
